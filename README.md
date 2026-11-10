@@ -1,58 +1,124 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# CSM Management
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+CSM Management adalah aplikasi web dashboard berbasis Laravel untuk simulasi pengelolaan konten fanbase Chainsaw Man. Aplikasi ini menampilkan fitur login, dashboard performa, halaman pengelolaan episode, dan profil pengguna dengan desain UI yang terinspirasi dari tema anime ChainsawMan.
 
-## About Laravel
+## Fitur utama
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Login sederhana dengan validasi username dan password
+- Dashboard statistik performa episode
+- Halaman pengelolaan episode
+- Halaman profil pengguna
+- Data dummy untuk simulasi tanpa database real
+- UI responsif dengan Blade + Tailwind CSS
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Teknologi yang digunakan
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- PHP 8.3
+- Laravel 13
+- Composer
+- Vite
+- Tailwind CSS
+- Blade Templates
 
-## Learning Laravel
+## Screenshots
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+![Login page](resources/asset/login.png)
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+![Dashboard page](resources/asset/dashB.png)
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+![Management page](resources/asset/pengelolaan.png)
 
-## Agentic Development
+![Profile page](resources/asset/profil.png)
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+## Struktur proyek
 
-```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+```text
+.
+├── app/
+│   └── Http/
+│       └── Controllers/
+│           └── PageController.php
+├── resources/
+│   ├── asset/
+│   └── views/
+│       ├── dashboard.blade.php
+│       ├── login.blade.php
+│       ├── pengelolaan.blade.php
+│       ├── profile.blade.php
+│       └── layouts/
+├── routes/
+│   └── web.php
+├── public/
+├── .env.example
+├── composer.json
+├── package.json
+├── artisan
+├── vite.config.js
+├── phpunit.xml
+└── README.md
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+## Cara menjalankan project
 
-## Contributing
+1. Clone repository ini
+   ```bash
+   git clone https://github.com/Firdausizm/UTS_PWEB_252410103073.git
+   cd UTS_PWEB_252410103073
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+2. Install dependency PHP
+   ```bash
+   composer install
+   ```
 
-## Code of Conduct
+3. Copy file environment
+   ```bash
+   copy .env.example .env
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+4. Generate key aplikasi
+   ```bash
+   php artisan key:generate
+   ```
 
-## Security Vulnerabilities
+5. Install dependency frontend
+   ```bash
+   npm install
+   ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+6. Build aset frontend
+   ```bash
+   npm run build
+   ```
 
-## License
+7. Jalankan server lokal
+   ```bash
+   php artisan serve
+   ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+8. Buka browser dan akses
+   ```text
+   http://localhost:8000/login
+   ```
+
+## Login demo
+
+Aplikasi ini menggunakan simulasi login tanpa autentikasi database. Username minimal 3 karakter dan password minimal 4 karakter. Setelah login, username akan dikirim sebagai query parameter untuk menampilkan data pengguna di halaman dashboard, pengelolaan, dan profil.
+
+Contoh:
+
+```text
+/login
+/dashboard?username=yourname
+/pengelolaan?username=yourname
+/profile?username=yourname
+```
+
+## Catatan
+
+Project ini cocok digunakan sebagai demo atau tugas pengembangan web sederhana dengan Laravel dan desain custom UI. Untuk kebutuhan produksi, fitur autentikasi dan penyimpanan data sebaiknya diganti dengan database dan sistem auth yang lebih aman.
+
+## Lisensi
+
+Project ini menggunakan lisensi default Laravel/MIT sesuai dengan template aplikasi Laravel yang dipakai.
+
